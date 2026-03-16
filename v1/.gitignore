@@ -9,3 +9,6 @@ target/
 #OS files
 .DS_Store
 Thumbs.db
+
+# my task tracker file
+sizwetasks.txt
