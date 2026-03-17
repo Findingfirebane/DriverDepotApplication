@@ -15,8 +15,11 @@ Installs needed:
 
 JDK 21
 apache maven 3.9.12 <- this allows for mvn tomcat7:run 
-MySQL 8.0.42
-apache Tomcat 9
+MySQL 8.0.42 (and VS code extenstion if you want.)
+
+
+
+//apache Tomcat 9
 
 we will have 2 tomcats. This one for submission, and an embedded version to make development easier
 tomcat local we will use for submission.
