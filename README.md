@@ -23,7 +23,7 @@ src/main/resources/db.properties
 
 ## Technologies
 
-- Java
+- Java (JDK 21)
 - Servlets (javax)
 - Apache Tomcat (embedded for now- further deployment on local apache server)
 - Maven
