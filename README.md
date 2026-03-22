@@ -76,7 +76,7 @@ Database credentials are stored in:
 v1/src/main/resources/database.properties
 ```
 
-This file has been updated — make sure your local MySQL matches:
+This file has been updated! Make sure your local MySQL matches:
 
 ```
 jdbc.url=jdbc:mysql://localhost:3306/vehiclemanagement
@@ -116,7 +116,7 @@ mvn tomcat7:run
 4. Click Submit Inquiry — green success banner confirms submission
 5. Open http://localhost:8080/v1/notifications
 6. New inquiry appears at the top of the table
-7. Click Delete on any row to remove it — page reloads with updated table
+7. Click Delete on any row to remove it. The page reloads with updated table
 
 ### Note for Teammates
 
