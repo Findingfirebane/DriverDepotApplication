@@ -40,7 +40,7 @@ This section covers the customer inquiry form (US.3) and the staff notifications
 
 - JDK 21
 - MySQL 8.0
-- Eclipse IDE (or any IDE with Maven support)
+- Any IDE with Maven support
 
 ### Database Setup
 
