@@ -32,7 +32,7 @@ src/main/resources/db.properties
 
 ---
 
-## US.3 & US.5 — Customer Inquiry and Staff Notifications (Emuvoke Aghegho)
+## US.3 & US.5 â€” Customer Inquiry and Staff Notifications (Emuvoke Aghegho)
 
 This section covers the customer inquiry form (US.3) and the staff notifications portal (US.5).
 
@@ -76,7 +76,7 @@ Database credentials are stored in:
 v1/src/main/resources/database.properties
 ```
 
-This file has been updated — make sure your local MySQL matches:
+This file has been updated â€” make sure your local MySQL matches:
 
 ```
 jdbc.url=jdbc:mysql://localhost:3306/vehiclemanagement
@@ -113,10 +113,10 @@ mvn tomcat7:run
 1. Open http://localhost:8080/v1/submitInquiry
 2. Vehicle is pre-filled and locked (simulates clicking Enquire on a listing)
 3. Fill in name, email, and optional message
-4. Click Submit Inquiry — green success banner confirms submission
+4. Click Submit Inquiry â€” green success banner confirms submission
 5. Open http://localhost:8080/v1/notifications
 6. New inquiry appears at the top of the table
-7. Click Delete on any row to remove it — page reloads with updated table
+7. Click Delete on any row to remove it â€” page reloads with updated table
 
 ### Note for Teammates
 
@@ -124,4 +124,4 @@ The database.properties file has been updated from the original cst8288/vehiclem
 Please update your local MySQL setup to match the credentials above before running.
 
 When US.2 (vehicle search) is complete, the hardcoded vehicle value in SubmitInquiryServlet.java
-can be replaced with a URL parameter — this is a two line change and all other code remains the same.
+can be replaced with a URL parameter. This is a two line change and all other code remains the same.
