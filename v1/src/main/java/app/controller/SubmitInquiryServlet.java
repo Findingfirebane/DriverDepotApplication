@@ -13,7 +13,11 @@ import java.sql.SQLException;
 @WebServlet("/submitInquiry")
 public class SubmitInquiryServlet extends HttpServlet {
 
-    private NotificationService service = new NotificationService();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private NotificationService service = new NotificationService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
