@@ -38,4 +38,31 @@ public class VehicleService {
         }
         return vehicleDTOList;
     }
+
+
+    
+    public List<VehicleDTO> getVehiclesByMake(String make){
+       List <Vehicle> vehicles = vehicleDAO.getAllVehicles();
+        List <VehicleDTO> vehicleDTOList= new ArrayList<>();
+
+        for (Vehicle v: vehicles){
+            VehicleDTO vehicleDTO = new VehicleDTO();
+
+            vehicleDTO.setId(v.getId());
+            vehicleDTO.setMake(v.getMake());
+            vehicleDTO.setModel(v.getModel());
+            vehicleDTO.setMilage(v.getMilage());
+            vehicleDTO.setMsrp(v.getMsrp());
+            vehicleDTO.setYear(v.getYear());
+            vehicleDTO.setDetails(v.getDetails());
+
+            vehicleDTOList.add(vehicleDTO);
+
+
+            
+        }
+        return vehicleDTOList;
+    }
+
+
 }

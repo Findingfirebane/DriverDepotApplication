@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import app.dto.VehicleDTO;
 import app.model.Vehicle;
@@ -39,6 +40,44 @@ public class VehicleDAO {
             e.printStackTrace();
         }
         return vehicles;
+
+    }
+
+
+    public List<Vehicle> getVehiclesByMake(String make){
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+try {
+        Connection conn = DatabaseConnection.INSTANCE.getConnection();
+        String sql = "SELECT * FROM vehicles WHERE make LIKE ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, "%" + make + "%");
+
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+             Vehicle vehicle = new Vehicle();
+                vehicle.setId(rs.getInt("id"));
+                vehicle.setMake(rs.getString("make"));
+                vehicle.setModel(rs.getString("model"));
+                vehicle.setYear(rs.getInt("year"));
+                vehicle.setMilage(rs.getInt("mileage"));
+                vehicle.setMsrp(rs.getInt("msrp"));
+                vehicle.setStock(rs.getInt("stock"));
+                vehicle.setDetails(rs.getString("details"));
+                vehicles.add(vehicle);
+            
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return vehicles;
+
 
     }
 }
