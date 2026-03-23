@@ -25,16 +25,28 @@ public class VehicleServlet extends HttpServlet{
         System.out.println("VehicleServlet HIT");
 
         String make = request.getParameter("make");
+        String model = request.getParameter("model");
+
         System.out.println("Make param: " + make);
+        System.out.println("model param: " + model);
+
 
         try {
             List<VehicleDTO> vehicles;
 
-            if(make == null || make.isEmpty()){
+            if((make == null || make.isEmpty()) && (model == null || model.isEmpty())) {
                 vehicles = vs.getAllVehicles();
                 System.out.println("Vehicels size: " + vehicles.size());
-            }else{
+            }else if((make != null || !make.isEmpty()) && (model == null || model.isEmpty())){
                 vehicles = vs.getVehiclesByMake(make);
+                System.out.println("Vehicels size: " + vehicles.size());
+            }else if ((make == null || make.isEmpty()) && (model != null || !model.isEmpty() )){
+                vehicles = vs.getVehiclesByModel(model);
+                System.out.println("Vehicels size: " + vehicles.size());
+            }else {
+                vehicles = vs.getVehiclesByMakeAndModel(make, model);
+                System.out.println("Vehicels size: this is the combo search" + vehicles.size());
+
             }
 
             System.out.println("Vehicles returned: " + vehicles.size());
