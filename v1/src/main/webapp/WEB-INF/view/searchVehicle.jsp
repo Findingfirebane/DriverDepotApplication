@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="app.model.Vehicle" %>
+<%@ page import="app.dto.VehicleDTO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,17 +22,17 @@
 
     <%
         // Retrieve the vehicles list from the request
-        List<Vehicle> vehicles = (List<Vehicle>) request.getAttribute("vehicles");
+        List<VehicleDTO> vehicles = (List<VehicleDTO>) request.getAttribute("vehicles");
 
         if (vehicles != null && !vehicles.isEmpty()) {
-            for (Vehicle v : vehicles) {
+            for (VehicleDTO v : vehicles) {
     %>
                 <div class="card mb-2" style="max-width: 500px;">
                     <div class="card-body">
                         <h5 class="card-title"><%= v.getMake() %> - <%= v.getModel() %></h5>
                         <p class="card-text">
                             Year: <%= v.getYear() %> <br>
-                            Mileage: <%= v.getMilage() %> miles <br>
+                            Mileage: <%= v.getMileage() %> miles <br>
                             MSRP: $<%= v.getMsrp() %>
                         </p>
                     </div>

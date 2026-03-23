@@ -7,7 +7,7 @@ public class VehicleDTO implements Serializable{
     private String make;
     private String model;
     private int year;
-    private int milage;
+    private int mileage;
     private int msrp;
     private int stock;
     private String details;
@@ -37,11 +37,11 @@ public class VehicleDTO implements Serializable{
     public void setYear(int year) {
         this.year = year;
     }
-    public int getMilage() {
-        return milage;
+    public int getMileage() {
+        return mileage;
     }
-    public void setMilage(int milage) {
-        this.milage = milage;
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
     }
     public int getMsrp() {
         return msrp;

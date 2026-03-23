@@ -26,7 +26,7 @@ public class VehicleService {
             vehicleDTO.setId(v.getId());
             vehicleDTO.setMake(v.getMake());
             vehicleDTO.setModel(v.getModel());
-            vehicleDTO.setMilage(v.getMilage());
+            vehicleDTO.setMileage(v.getMileage());
             vehicleDTO.setMsrp(v.getMsrp());
             vehicleDTO.setYear(v.getYear());
             vehicleDTO.setDetails(v.getDetails());
@@ -40,23 +40,25 @@ public class VehicleService {
     }
 
 
-    
+
     public List<VehicleDTO> getVehiclesByMake(String make){
        List <Vehicle> vehicles = vehicleDAO.getAllVehicles();
         List <VehicleDTO> vehicleDTOList= new ArrayList<>();
 
         for (Vehicle v: vehicles){
+            if(v.getMake().equalsIgnoreCase(make)){
             VehicleDTO vehicleDTO = new VehicleDTO();
 
             vehicleDTO.setId(v.getId());
             vehicleDTO.setMake(v.getMake());
             vehicleDTO.setModel(v.getModel());
-            vehicleDTO.setMilage(v.getMilage());
+            vehicleDTO.setMileage(v.getMileage());
             vehicleDTO.setMsrp(v.getMsrp());
             vehicleDTO.setYear(v.getYear());
             vehicleDTO.setDetails(v.getDetails());
 
             vehicleDTOList.add(vehicleDTO);
+        }
 
 
             

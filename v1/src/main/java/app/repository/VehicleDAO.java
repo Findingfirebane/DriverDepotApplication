@@ -27,7 +27,7 @@ public class VehicleDAO {
                 vehicle.setMake(rs.getString("make"));
                 vehicle.setModel(rs.getString("model"));
                 vehicle.setYear(rs.getInt("year"));
-                vehicle.setMilage(rs.getInt("mileage"));
+                vehicle.setMileage(rs.getInt("mileage"));
                 vehicle.setMsrp(rs.getInt("msrp"));
                 vehicle.setStock(rs.getInt("stock"));
                 vehicle.setDetails(rs.getString("details"));
@@ -60,7 +60,7 @@ try {
                 vehicle.setMake(rs.getString("make"));
                 vehicle.setModel(rs.getString("model"));
                 vehicle.setYear(rs.getInt("year"));
-                vehicle.setMilage(rs.getInt("mileage"));
+                vehicle.setMileage(rs.getInt("mileage"));
                 vehicle.setMsrp(rs.getInt("msrp"));
                 vehicle.setStock(rs.getInt("stock"));
                 vehicle.setDetails(rs.getString("details"));
