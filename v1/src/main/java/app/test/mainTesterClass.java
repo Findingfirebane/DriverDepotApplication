@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import app.dto.VehicleDTO;
+import app.model.Vehicle;
 import app.repository.VehicleDAO;
 import app.util.DatabaseConnection;
 
@@ -15,8 +16,8 @@ public class mainTesterClass {
 
         System.out.println("Testing output: %n");
         VehicleDAO vehicle = new VehicleDAO();
-        ArrayList<VehicleDTO> vehicles = vehicle.getAllVehicles();
-        for(VehicleDTO v: vehicles){
+        ArrayList<Vehicle> vehicles = vehicle.getAllVehicles();
+        for(Vehicle v: vehicles){
             System.out.println(
             v.getId() + " " +
             v.getMake() + " " +

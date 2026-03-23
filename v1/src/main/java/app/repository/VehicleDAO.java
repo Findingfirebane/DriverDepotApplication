@@ -12,16 +12,16 @@ import app.util.DatabaseConnection;
 
 public class VehicleDAO {
 
-    public ArrayList<VehicleDTO> getAllVehicles(){
+    public ArrayList<Vehicle> getAllVehicles(){
 
-        ArrayList<VehicleDTO> vehicles = new ArrayList<>();
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
 
         try(Connection con = DatabaseConnection.INSTANCE.getConnection();
             PreparedStatement ps = con.prepareStatement("select * FROM vehicles");
             ResultSet rs = ps.executeQuery();){
 // make, model, year, mileage, msrp, stock, details column names
             while(rs.next()){
-                VehicleDTO vehicle = new VehicleDTO();
+                Vehicle vehicle = new Vehicle();
                 vehicle.setId(rs.getInt("id"));
                 vehicle.setMake(rs.getString("make"));
                 vehicle.setModel(rs.getString("model"));
