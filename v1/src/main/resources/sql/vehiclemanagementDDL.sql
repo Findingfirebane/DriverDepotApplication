@@ -1,11 +1,12 @@
 -- create database vehiclemanagement;
 
 use vehiclemanagement;
+drop table if EXISTS user_notifications;
+drop table if exists user_saved_vehicles;
+
 drop table if EXISTS vehicles;
 drop table if EXISTS users;
 drop table if EXISTS notifications;
-drop table if EXISTS user_notifications;
-drop table if exists user_saved_vehicles;
 drop table if  exists roles;
 
 create table vehicles(
@@ -27,6 +28,7 @@ create table roles(
 create table users(
     id int AUTO_INCREMENT PRIMARY KEY,
     user_name varchar(50) not null,
+    password varchar(50) not null,
     email varchar(50) not null,
     role_id int not null,
 
