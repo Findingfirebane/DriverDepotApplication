@@ -1,15 +1,11 @@
-package app.model;
-// model, year, mileage, msrp, stock, details
-public class Vehicle {
+package app.dto;
+
+import java.io.Serializable; 
+public class VehicleDTO implements Serializable{
+
     private int id;
     private String make;
-    public String getMake() {
-        return make;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
+   
     private String model;
     private int year;
     private int milage;
@@ -17,24 +13,18 @@ public class Vehicle {
     private int stock;
     private String details;
 
-
-    public Vehicle (){}
     
-    public Vehicle(int id, String make, String model, int year, int milage, int msrp, int stock, String details) {
-        this.id = id;
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.milage = milage;
-        this.msrp = msrp;
-        this.stock = stock;
-        this.details = details;
-    }
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
+    } 
+    public String getMake() {
+        return make;
+    }
+    public void setMake(String make) {
+        this.make = make;
     }
     public String getModel() {
         return model;
@@ -72,8 +62,6 @@ public class Vehicle {
     public void setDetails(String details) {
         this.details = details;
     }
-
-    
-    
+   
 
 }
