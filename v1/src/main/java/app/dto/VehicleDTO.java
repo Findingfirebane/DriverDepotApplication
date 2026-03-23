@@ -5,7 +5,6 @@ public class VehicleDTO implements Serializable{
 
     private int id;
     private String make;
-   
     private String model;
     private int year;
     private int milage;
