@@ -24,7 +24,7 @@ public class SubmitInquiryServlet extends HttpServlet {
             throws ServletException, IOException {
 
         req.setAttribute("vehicle", "2024 BMW X5");
-        req.getRequestDispatcher("/view/submitInquiry.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/view/submitInquiry.jsp").forward(req, resp);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SubmitInquiryServlet extends HttpServlet {
             e.printStackTrace();
             req.setAttribute("error", "Something went wrong. Please try again.");
             req.setAttribute("vehicle", vehicle);
-            req.getRequestDispatcher("/view/submitInquiry.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/view/submitInquiry.jsp").forward(req, resp);
         }
     }
 }

@@ -74,21 +74,39 @@ INSERT INTO users (user_name, email, password, role_id) VALUES
 ('alex','alex@email.com','alexpass111',2),
 ('lisa','lisa@email.com','lisa22222',2),
 ('david','david@email.com','david3333',1),
-('chris','chris@email.com','chris4444',2);
+('chris','chris@email.com','chris4444',2),
+('peterparker','peter.parker@dailybugle.com','friendly123',2),
+('milesmorales','miles.morales@brooklyn.com','exaggeratedswagger',2),
+('peterb','noir@newyork1933.com','1933',2),
+('peterporker','peter.porker@marvel.com','thatsallfolks',2),
+('gwenstacy','gwen.stacy@ghostspider.com','gw3n!',2),
+('peniparker','peni.parker@spdr.com','a1d2f!34_gvfQrhf',2),
+('hobiebrown','hobie.brown@spiderpunk.com','anarchy!',2),
+('pavitraprabhakar','pavitr.prabhakar@mumbai.com','Mumbattan',2),
+('miguelohara','miguel.ohara@alchemax2099.com','eliminateanomalies',2);
 
 SELECT * from users;
 
 -- notifications
-INSERT INTO notifications (message) VALUES
-('Vehicle price dropped'),
-('New vehicle added'),
-('Service reminder'),
-('Stock updated'),
-('Promotion available'),
-('Vehicle back in stock'),
-('New SUV arrivals');
+INSERT INTO notifications (vehicle, customer_name, customer_email, message) VALUES
+('Honda Civic 2019',        'Peter Parker',     'peter.parker@dailybugle.com',   'Hi, I am interested in this vehicle. It seems practical and reliable which is important to me. Please contact me at your earliest convenience.'),
+('BMW 3 Series 2022',       'Miles Morales',    'miles.morales@brooklyn.com',    'Yo this 3 Series looks clean. Been eyeing it for a while. What is the best price you can do?'),
+('Mercedes C-Class 2022',   'Peter B. Parker',  'noir@newyork1933.com',          'I need this car. Dark colour only. Do not contact me before noon.'),
+('Ford F-150 2021',         'Peter Porker',     'peter.porker@marvel.com',       'HELLO I WOULD LIKE THIS TRUCK VERY MUCH IT IS BIG AND SO AM I WELL NOT REALLY BUT ANYWAY PLEASE CALL ME!!'),
+('Audi A4 2021',            'Gwen Stacy',       'gwen.stacy@ghostspider.com',    'Interested in the A4. Looking for something with sharp handling and a clean interior. Does it come in white?'),
+('BMW X3 2022',             'Peni Parker',      'peni.parker@spdr.com',          'I would like the full technical specification sheet for the X3 before proceeding. Particularly interested in the onboard computing and personalization capabilities.'),
+('Ford Focus 2018',         'Hobie Brown',      'hobie.brown@spiderpunk.com',    'Dont care about the specs. Does it run? Does it come in anything that is not boring? Let me know innit.'),
+('Toyota Camry 2021',       'Pavitr Prabhakar', 'pavitr.prabhakar@mumbai.com',   'Namaste, I am very interested in the Camry. It is a well regarded vehicle and I would appreciate the opportunity to discuss further.'),
+('BMW X5 2022',             'Miguel O Hara',    'miguel.ohara@alchemax2099.com', 'I need a vehicle capable of handling high performance conditions. The X5 specs are acceptable. Please advise on availability.');
 
 -- vehicles that a user has saved to track
 INSERT INTO user_saved_vehicles (user_id, vehicle_id) VALUES
-(17,1),(17,2),(21,3),(21,5),(23,10),
-(24,15),(17,20),(18,25),(19,30),(18,35);
+(9,2),(9,11),
+(10,6),(10,36),
+(11,8),(11,28),
+(12,3),(12,23),
+(13,7),(13,17),
+(14,16),(14,9),
+(15,43),(15,44),
+(16,11),(16,21),
+(17,36),(17,38);

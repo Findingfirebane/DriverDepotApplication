@@ -45,9 +45,11 @@ create table user_saved_vehicles(
 
 create table notifications(
     id int AUTO_INCREMENT PRIMARY KEY,
-    message text not null,
+    vehicle varchar(100) not null,
+    customer_name varchar(100) not null,
+    customer_email varchar(100) not null,
+    message text null,
     submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
 );
 
 create table user_notifications(
