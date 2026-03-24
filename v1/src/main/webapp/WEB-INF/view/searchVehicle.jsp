@@ -15,6 +15,11 @@
 
     <form method="get" action="searchVehicles" class="mb-3">
         <input type="text" name="make" placeholder="Enter make" class="form-control mb-2" style="max-width: 300px; display:inline-block;">
+        <input type="text" name="model" placeholder="Enter model" class="form-control mb-2" style="max-width: 300px; display:inline-block;">
+        <input type="number" name="year" placeholder="Enter Year" class="form-control mb-2" style="max-width: 300px; display:inline-block;">
+        <input type="number" name="minPrice" placeholder="Enter Min Price" step=1000 class="form-control mb-2" style="max-width: 300px; display:inline-block;">
+        <input type="number" name="maxPrice" placeholder="Enter Max Price" step=1000 class="form-control mb-2" style="max-width: 300px; display:inline-block;">
+
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
 
