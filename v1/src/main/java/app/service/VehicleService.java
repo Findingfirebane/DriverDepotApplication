@@ -125,6 +125,37 @@ public class VehicleService {
     }
 
 
+    /**
+     * @param min minimum price
+     * @param max maximum price
+     * @return data transfer object
+     */
+    public List<VehicleDTO> getVehiclesByPriceRange(int min, int max){
+        List <Vehicle> vehiclesByModel = vehicleDAO.getVehiclesByPriceRange(min, max);
+            List <VehicleDTO> vehicleDTOList= new ArrayList<>();
+
+            for (Vehicle v: vehiclesByModel){
+                if((v.getMsrp() >= min) && (v.getMsrp() <= max)){
+                VehicleDTO vehicleDTO = new VehicleDTO();
+
+                vehicleDTO.setId(v.getId());
+                vehicleDTO.setMake(v.getMake());
+                vehicleDTO.setModel(v.getModel());
+                vehicleDTO.setMileage(v.getMileage());
+                vehicleDTO.setMsrp(v.getMsrp());
+                vehicleDTO.setYear(v.getYear());
+                vehicleDTO.setDetails(v.getDetails());
+
+                vehicleDTOList.add(vehicleDTO);
+            }
+
+
+            
+        }
+        return vehicleDTOList;
+    }
+
+
 // this section will be where we keep the filtered search methods//
 /**
  * 

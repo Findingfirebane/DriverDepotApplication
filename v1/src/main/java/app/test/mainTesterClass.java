@@ -20,7 +20,7 @@ public class mainTesterClass {
 
         VehicleService vs = new VehicleService();
 
-        List <VehicleDTO> vehicle= vs.getAllVehicles();
+        List <VehicleDTO> vehicle= vs.getVehiclesByPriceRange(15000, 30000);
 
         // VehicleDAO vehicle = new VehicleDAO();
         // ArrayList<Vehicle> vehicles = vehicle.getAllVehicles();
@@ -29,7 +29,7 @@ public class mainTesterClass {
             v.getId() + " " +
             v.getMake() + " " +
             v.getModel() + " " +
-            v.getYear()
+            v.getMsrp()
             );
        }
 

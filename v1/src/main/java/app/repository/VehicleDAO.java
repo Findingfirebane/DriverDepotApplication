@@ -189,5 +189,42 @@ try {
 
     return vehicles;
     }
+/**
+ * used to search vehicles passed on a range 
+ */
+    public List<Vehicle> getVehiclesByPriceRange(int rangeMin, int rangeMax){
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+try {
+        Connection conn = DatabaseConnection.INSTANCE.getConnection();
+        String sql = "SELECT * FROM vehicles WHERE msrp BETWEEN ? AND  ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1,  rangeMin);
+        stmt.setInt(2, rangeMax); 
 
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+             Vehicle vehicle = new Vehicle();
+                vehicle.setId(rs.getInt("id"));
+                vehicle.setMake(rs.getString("make"));
+                vehicle.setModel(rs.getString("model"));
+                vehicle.setYear(rs.getInt("year"));
+                vehicle.setMileage(rs.getInt("mileage"));
+                vehicle.setMsrp(rs.getInt("msrp"));
+                vehicle.setStock(rs.getInt("stock"));
+                vehicle.setDetails(rs.getString("details"));
+                vehicles.add(vehicle);
+            
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return vehicles;
+    }
 }
