@@ -99,6 +99,30 @@ public class VehicleService {
     }
 
 
+    public List<VehicleDTO> getVehiclesByYear(int year){
+        List <Vehicle> vehiclesByModel = vehicleDAO.getVehiclesByYear(year);
+            List <VehicleDTO> vehicleDTOList= new ArrayList<>();
+
+            for (Vehicle v: vehiclesByModel){
+                if(v.getYear() == year){
+                VehicleDTO vehicleDTO = new VehicleDTO();
+
+                vehicleDTO.setId(v.getId());
+                vehicleDTO.setMake(v.getMake());
+                vehicleDTO.setModel(v.getModel());
+                vehicleDTO.setMileage(v.getMileage());
+                vehicleDTO.setMsrp(v.getMsrp());
+                vehicleDTO.setYear(v.getYear());
+                vehicleDTO.setDetails(v.getDetails());
+
+                vehicleDTOList.add(vehicleDTO);
+            }
+
+
+            
+        }
+        return vehicleDTOList;
+    }
 
 
 // this section will be where we keep the filtered search methods//
