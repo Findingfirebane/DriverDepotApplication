@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import app.dto.VehicleDTO;
 import app.model.Vehicle;
 import app.util.DatabaseConnection;
 

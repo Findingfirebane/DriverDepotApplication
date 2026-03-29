@@ -63,10 +63,18 @@ USE vehiclemanagement;
 Then open and run the full script at:
 
 ```
-v1/src/main/resources/sql/notifications.sql
+v1/src/main/resources/sql/vehiclemanagementDDL.sql
 ```
 
 This creates the notifications table and inserts 8 rows of test data.
+
+4. Run the population script to insert all test data:
+```
+v1/src/main/resources/sql/dbpopulation.sql
+``` 
+This creates all tables including notifications and inserts test data for US.3 and US.5.
+
+
 
 ### Configuration
 
