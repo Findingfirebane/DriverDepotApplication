@@ -115,6 +115,7 @@ mvn tomcat7:run
 |------|-----|-------------|
 | Customer Inquiry Form | http://localhost:8080/v1/submitInquiry | Customer submits a vehicle inquiry |
 | Staff Notifications Portal | http://localhost:8080/v1/notifications | Staff views and deletes inquiries |
+|Search Vehicle Page|http://localhost:8080/v1 | vehicle search page |
 
 ### Demo Flow
 

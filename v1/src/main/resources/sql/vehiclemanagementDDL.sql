@@ -1,4 +1,4 @@
--- create database vehiclemanagement;
+create database vehiclemanagement;
 
 use vehiclemanagement;
 drop table if EXISTS user_notifications;
