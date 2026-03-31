@@ -126,6 +126,8 @@ mvn tomcat7:run
 5. Open http://localhost:8080/v1/notifications
 6. New inquiry appears at the top of the table
 7. Click Delete on any row to remove it. The page reloads with updated table
+8. Open http://localhost:8080/v1/searchVehicles
+9. Search vehicles by various parameters 
 
 ### Note for Teammates
 
