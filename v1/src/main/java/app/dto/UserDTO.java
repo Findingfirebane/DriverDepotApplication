@@ -1,6 +1,10 @@
-package app.model;
+package app.dto;
 
-public class User {
+import java.io.Serializable;
+
+public class UserDTO implements Serializable{
+
+
 
     private int id;
     private String username;
@@ -8,7 +12,12 @@ public class User {
     private String password;
     private int role_id;
 
+
     
+    
+    public UserDTO(String username2, String email2, String password2, Integer role_id2) {
+        //TODO Auto-generated constructor stub
+    }
     public int getId() {
         return id;
     }
@@ -40,5 +49,4 @@ public class User {
     public void setRole_id(int role_id) {
         this.role_id = role_id;
     }
-
 }
