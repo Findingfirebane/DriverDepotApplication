@@ -43,7 +43,7 @@ public class VehicleDAO {
 
     public List<Vehicle> getVehiclesByMake(String make){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
-try {
+        try {
         Connection conn = DatabaseConnection.INSTANCE.getConnection();
         String sql = "SELECT * FROM vehicles WHERE make LIKE ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -154,7 +154,7 @@ public List<Vehicle> getVehiclesByYear(int year){
      
 public List<Vehicle> getVehiclesByMakeAndModel(String make, String model){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
-try {
+    try {
         Connection conn = DatabaseConnection.INSTANCE.getConnection();
         String sql = "SELECT * FROM vehicles WHERE model LIKE ? AND make LIKE ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -192,7 +192,7 @@ try {
  */
     public List<Vehicle> getVehiclesByPriceRange(int rangeMin, int rangeMax){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
-try {
+        try {
         Connection conn = DatabaseConnection.INSTANCE.getConnection();
         String sql = "SELECT * FROM vehicles WHERE msrp BETWEEN ? AND  ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
