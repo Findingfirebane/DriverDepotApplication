@@ -19,6 +19,12 @@ public class SignUpServlet extends HttpServlet{
     public UserService user_service = new UserService();
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doPost(req, resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException{
         System.out.println("Signup servlet hit");
@@ -55,12 +61,27 @@ public class SignUpServlet extends HttpServlet{
         try {
             
             if(username_valid && email_valid && password_valid && role_valid){
-                UserDTO user = new UserDTO(username,email,password,role_id);
+                UserDTO userDTO = new UserDTO();
+                userDTO.setUsername(username);
+                userDTO.setEmail(email);
+                userDTO.setPassword(password);
+                userDTO.setRole_id(role_id);
                 
-                user_service.signUpUser(user);
-            }
+
+                user_service.signUpUser(userDTO);
+
+                System.out.println("user added: " + userDTO.getUsername());
+
+            }//may put else to return with emptied fields
+
+
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/signUp.jsp");
+            rd.forward(request, response);
         } catch (Exception e) {
-            // TODO: handle exception
+             e.printStackTrace();
+
+            response.setContentType("text/plain");
+            e.printStackTrace(response.getWriter());
         }
 
 

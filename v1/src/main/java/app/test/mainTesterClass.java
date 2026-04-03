@@ -6,9 +6,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import app.dto.UserDTO;
 import app.dto.VehicleDTO;
+import app.model.User;
 import app.model.Vehicle;
 import app.repository.VehicleDAO;
+import app.service.UserService;
 import app.service.VehicleService;
 import app.util.DatabaseConnection;
 
@@ -18,21 +21,17 @@ public class mainTesterClass {
 
         System.out.println("Testing service layer %n");
 
-        VehicleService vs = new VehicleService();
+       UserService us = new UserService();
+       UserDTO userDTO = new UserDTO();
+       userDTO.setUsername("sizwe");
+       userDTO.setEmail("sizwe");
+       userDTO.setPassword("sizwe");
+       userDTO.setRole_id(1);
 
-        List <VehicleDTO> vehicle= vs.getVehiclesByPriceRange(15000, 30000);
+       us.signUpUser(userDTO);
 
-        // VehicleDAO vehicle = new VehicleDAO();
-        // ArrayList<Vehicle> vehicles = vehicle.getAllVehicles();
-        for(VehicleDTO v: vehicle){
-            System.out.println(
-            v.getId() + " " +
-            v.getMake() + " " +
-            v.getModel() + " " +
-            v.getMsrp()
-            );
        }
 
 
     }
-}
+

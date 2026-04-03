@@ -16,7 +16,7 @@ public class UserDAO {
     public User signUpUser(User user){
         User new_user = new User();
         
-        String sql = "insert into users(user_name, email, password, role_id) values (?,?,?,?)";
+        String sql = "insert into users(user_name, email, password, role_id) values (?,?,?,?);";
 
 
         try (Connection con = DatabaseConnection.INSTANCE.getConnection();) {
@@ -28,14 +28,14 @@ public class UserDAO {
                 ps.setString(3, user.getPassword());
                 ps.setInt(4, user.getRole_id());
                 /*role id is an int but will be converted from the html form into an integer representing role-type  */
-                ResultSet rs = ps.executeQuery();
+                 ps.executeUpdate();
 
-                if(rs.next()){
-                    System.out.println("User inserted"+user.getUsername());
-                }
+                
+                System.out.println("User inserted" +user.getUsername());
+                
             
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
 
 

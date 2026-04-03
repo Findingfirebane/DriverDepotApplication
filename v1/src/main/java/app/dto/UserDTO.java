@@ -15,9 +15,6 @@ public class UserDTO implements Serializable{
 
     
     
-    public UserDTO(String username2, String email2, String password2, Integer role_id2) {
-        //TODO Auto-generated constructor stub
-    }
     public int getId() {
         return id;
     }

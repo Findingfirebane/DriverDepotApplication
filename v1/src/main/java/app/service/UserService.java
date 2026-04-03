@@ -10,15 +10,15 @@ public class UserService {
 
 
 
-    public UserDTO signUpUser(UserDTO user){
+    public UserDTO signUpUser(UserDTO userDTO){
 
-        UserDTO userDTO = new UserDTO();
+        User user = new User();
 
-        userDTO.setUsername(user.getUsername());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setPassword(user.getPassword());
-        userDTO.setRole_id(user.getRole_id());
-        
+        user.setUsername(userDTO.getUsername());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(userDTO.getPassword());
+        user.setRole_id(userDTO.getRole_id());
+        userDAO.signUpUser(user);
         return userDTO;
     }
 
