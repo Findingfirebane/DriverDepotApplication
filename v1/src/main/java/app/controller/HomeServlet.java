@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/")
-public class HomeServlet extends HttpServlet{
+public class HomeServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
 
-        request.getRequestDispatcher("WEB-INF/view/searchVehicle.jsp")
-        .forward(request, response);
+        response.sendRedirect(request.getContextPath() + "/searchVehicles");
     }
-    
 }

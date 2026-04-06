@@ -7,183 +7,67 @@ import app.dto.VehicleDTO;
 import app.model.Vehicle;
 import app.repository.VehicleDAO;
 
-/**
- * Service class wraps model objects from repository class to dtos for cleaner serpeation 
- */
 public class VehicleService {
 
     VehicleDAO vehicleDAO = new VehicleDAO();
 
-
-    public List<VehicleDTO> getAllVehicles(){
-
-        List <Vehicle> vehicles = vehicleDAO.getAllVehicles();
-        List <VehicleDTO> vehicleDTOList= new ArrayList<>();
-
-        for (Vehicle v: vehicles){
-            VehicleDTO vehicleDTO = new VehicleDTO();
-
-            vehicleDTO.setId(v.getId());
-            vehicleDTO.setMake(v.getMake());
-            vehicleDTO.setModel(v.getModel());
-            vehicleDTO.setMileage(v.getMileage());
-            vehicleDTO.setMsrp(v.getMsrp());
-            vehicleDTO.setYear(v.getYear());
-            vehicleDTO.setDetails(v.getDetails());
-
-            vehicleDTOList.add(vehicleDTO);
-
-
-            
-        }
-        return vehicleDTOList;
+    private VehicleDTO mapToDTO(Vehicle v) {
+        VehicleDTO dto = new VehicleDTO();
+        dto.setId(v.getId());
+        dto.setMake(v.getMake());
+        dto.setModel(v.getModel());
+        dto.setMileage(v.getMileage());
+        dto.setMsrp(v.getMsrp());
+        dto.setYear(v.getYear());
+        dto.setDetails(v.getDetails());
+        return dto;
     }
 
-
-/**
- * Get vehicles by make from user input
- * Wrapper to wrap DAO into DTO 
- **/ 
-    public List<VehicleDTO> getVehiclesByMake(String make){
-       List <Vehicle> vehicles = vehicleDAO.getAllVehicles();
-        List <VehicleDTO> vehicleDTOList= new ArrayList<>();
-
-        for (Vehicle v: vehicles){
-            if(v.getMake().equalsIgnoreCase(make)){
-            VehicleDTO vehicleDTO = new VehicleDTO();
-
-            vehicleDTO.setId(v.getId());
-            vehicleDTO.setMake(v.getMake());
-            vehicleDTO.setModel(v.getModel());
-            vehicleDTO.setMileage(v.getMileage());
-            vehicleDTO.setMsrp(v.getMsrp());
-            vehicleDTO.setYear(v.getYear());
-            vehicleDTO.setDetails(v.getDetails());
-
-            vehicleDTOList.add(vehicleDTO);
+    public List<VehicleDTO> getAllVehicles() {
+        List<VehicleDTO> list = new ArrayList<>();
+        for (Vehicle v : vehicleDAO.getAllVehicles()) {
+            list.add(mapToDTO(v));
         }
-
-
-            
-        }
-        return vehicleDTOList;
+        return list;
     }
 
-/**
- * Get vehicles by model from user input
- * Wrapper to wrap DAO into DTO 
- **/ 
-    public List<VehicleDTO> getVehiclesByModel(String model){
-       List <Vehicle> vehiclesByModel = vehicleDAO.getVehiclesByModel(model);
-        List <VehicleDTO> vehicleDTOList= new ArrayList<>();
-
-        for (Vehicle v: vehiclesByModel){
-            if(v.getModel().equalsIgnoreCase(model)){
-            VehicleDTO vehicleDTO = new VehicleDTO();
-
-            vehicleDTO.setId(v.getId());
-            vehicleDTO.setMake(v.getMake());
-            vehicleDTO.setModel(v.getModel());
-            vehicleDTO.setMileage(v.getMileage());
-            vehicleDTO.setMsrp(v.getMsrp());
-            vehicleDTO.setYear(v.getYear());
-            vehicleDTO.setDetails(v.getDetails());
-
-            vehicleDTOList.add(vehicleDTO);
+    public List<VehicleDTO> getVehiclesByMake(String make) {
+        List<VehicleDTO> list = new ArrayList<>();
+        for (Vehicle v : vehicleDAO.getVehiclesByMake(make)) {
+            list.add(mapToDTO(v));
         }
-
-
-            
-        }
-        return vehicleDTOList;
+        return list;
     }
 
-
-    public List<VehicleDTO> getVehiclesByYear(int year){
-        List <Vehicle> vehiclesByModel = vehicleDAO.getVehiclesByYear(year);
-            List <VehicleDTO> vehicleDTOList= new ArrayList<>();
-
-            for (Vehicle v: vehiclesByModel){
-                if(v.getYear() == year){
-                VehicleDTO vehicleDTO = new VehicleDTO();
-
-                vehicleDTO.setId(v.getId());
-                vehicleDTO.setMake(v.getMake());
-                vehicleDTO.setModel(v.getModel());
-                vehicleDTO.setMileage(v.getMileage());
-                vehicleDTO.setMsrp(v.getMsrp());
-                vehicleDTO.setYear(v.getYear());
-                vehicleDTO.setDetails(v.getDetails());
-
-                vehicleDTOList.add(vehicleDTO);
-            }
-
-
-            
+    public List<VehicleDTO> getVehiclesByModel(String model) {
+        List<VehicleDTO> list = new ArrayList<>();
+        for (Vehicle v : vehicleDAO.getVehiclesByModel(model)) {
+            list.add(mapToDTO(v));
         }
-        return vehicleDTOList;
+        return list;
     }
 
-
-    /**
-     * @param min minimum price
-     * @param max maximum price
-     * @return data transfer object
-     */
-    public List<VehicleDTO> getVehiclesByPriceRange(int min, int max){
-        List <Vehicle> vehiclesByModel = vehicleDAO.getVehiclesByPriceRange(min, max);
-            List <VehicleDTO> vehicleDTOList= new ArrayList<>();
-
-            for (Vehicle v: vehiclesByModel){
-                if((v.getMsrp() >= min) && (v.getMsrp() <= max)){
-                VehicleDTO vehicleDTO = new VehicleDTO();
-
-                vehicleDTO.setId(v.getId());
-                vehicleDTO.setMake(v.getMake());
-                vehicleDTO.setModel(v.getModel());
-                vehicleDTO.setMileage(v.getMileage());
-                vehicleDTO.setMsrp(v.getMsrp());
-                vehicleDTO.setYear(v.getYear());
-                vehicleDTO.setDetails(v.getDetails());
-
-                vehicleDTOList.add(vehicleDTO);
-            }
-
-
-            
+    public List<VehicleDTO> getVehiclesByYear(int year) {
+        List<VehicleDTO> list = new ArrayList<>();
+        for (Vehicle v : vehicleDAO.getVehiclesByYear(year)) {
+            list.add(mapToDTO(v));
         }
-        return vehicleDTOList;
+        return list;
     }
 
-
-// this section will be where we keep the filtered search methods//
-/**
- * 
- * Method for filtered searching of vehicels 
- */
- public List<VehicleDTO> getVehiclesByMakeAndModel(String make, String model){
-       List <Vehicle> vehiclesByModel = vehicleDAO.getVehiclesByMakeAndModel(make, model);
-        List <VehicleDTO> vehicleDTOList= new ArrayList<>();
-
-        for (Vehicle v: vehiclesByModel){
-            if(v.getMake().equalsIgnoreCase(make) && v.getModel().equalsIgnoreCase(model)){
-            VehicleDTO vehicleDTO = new VehicleDTO();
-
-            vehicleDTO.setId(v.getId());
-            vehicleDTO.setMake(v.getMake());
-            vehicleDTO.setModel(v.getModel());
-            vehicleDTO.setMileage(v.getMileage());
-            vehicleDTO.setMsrp(v.getMsrp());
-            vehicleDTO.setYear(v.getYear());
-            vehicleDTO.setDetails(v.getDetails());
-
-            vehicleDTOList.add(vehicleDTO);
+    public List<VehicleDTO> getVehiclesByPriceRange(int min, int max) {
+        List<VehicleDTO> list = new ArrayList<>();
+        for (Vehicle v : vehicleDAO.getVehiclesByPriceRange(min, max)) {
+            list.add(mapToDTO(v));
         }
-
-
-            
-        }
-        return vehicleDTOList;
+        return list;
     }
 
+    public List<VehicleDTO> getVehiclesByMakeAndModel(String make, String model) {
+        List<VehicleDTO> list = new ArrayList<>();
+        for (Vehicle v : vehicleDAO.getVehiclesByMakeAndModel(make, model)) {
+            list.add(mapToDTO(v));
+        }
+        return list;
+    }
 }
