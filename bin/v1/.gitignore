@@ -1,0 +1,18 @@
+# maven build output 
+target/
+
+#IDE files 
+.vscode/
+*.iml
+.idea/
+
+#OS files
+.DS_Store
+Thumbs.db
+
+# my task tracker file
+sizwetasks.txt
+
+# erd tracking- no need to monitor
+erdvs.erd
+v1/src/main/resources/erdvs.erd

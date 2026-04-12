@@ -1,0 +1,36 @@
+Install the Extension Pack for Java: This pack includes essential extensions for Java development:
+
+1.    Language Support for Java™ by Red Hat: Provides core language features like IntelliSense, code navigation, refactoring, and error detection.
+
+2.    Debugger for Java: Offers robust debugging capabilities, including breakpoints, variable inspection, and "Hot Code Replace".
+
+3.    Test Runner for Java: Enables running and debugging JUnit/TestNG test cases directly within the editor.
+
+4.    Maven for Java and Project Manager for Java: Provide project management, dependency handling (using pom.xml files), and integration with build tools.
+
+5.    Visual Studio IntelliCode: Provides AI-assisted code completion
+
+
+Installs needed:
+
+JDK 21
+apache maven 3.9.12 <- this allows for mvn tomcat7:run 
+MySQL 8.0.42 (and VS code extenstion if you want.)
+
+
+
+//apache Tomcat 9
+
+we will have 2 tomcats. This one for submission, and an embedded version to make development easier
+tomcat local we will use for submission.
+embedded tomcat will be in the pom.xml file. We will use this for development because it allows us to hot reload jsps easily. 
+
+to run the tomcat pluggin: //you must be in the folder with the pom.xml file
+open terminal and type mvn tomcat7:run
+to kill Ctrl C
+
+when we change class files we will need to run mvn tomcat7:run or mvn clean then mvn compile in the terminal
+
+
+
+Docker to manage images
