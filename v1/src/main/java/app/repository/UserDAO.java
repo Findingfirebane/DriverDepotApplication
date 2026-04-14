@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 
 import app.model.User;
 import app.util.DatabaseConnection;
-
+/**
+ * Sizwe Magubane and Karan
+ */
 public class UserDAO {
 
     public boolean userExistsByEmail(String email) {

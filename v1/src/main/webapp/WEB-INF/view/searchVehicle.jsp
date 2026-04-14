@@ -465,15 +465,19 @@
                             <h4><%= v.getMake() %> <%= v.getModel() %></h4>
 
                                 <%
+                                if (userRole != null){
                                 if(userRole == 2){
                                 %>
                                     <span>Vehicle ID: <%= v.getId() %></span>
                                 <% 
                                 }
-                                else{
+                                else if(userRole == 1) {
+                                    
                                 %>
                                     <span></span>
                                 <%
+                                
+                                }
                                 }
                                 %>
                         </div>
