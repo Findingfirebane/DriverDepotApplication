@@ -32,8 +32,10 @@ public class SubmitInquiryServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String vehicle = req.getParameter("vehicle");
 
-		req.setAttribute("vehicle", "2024 BMW X5");
+		if(vehicle != null && !vehicle.isEmpty()){}
+		req.setAttribute("vehicle", vehicle);
 		req.getRequestDispatcher("/WEB-INF/view/submitInquiry.jsp").forward(req, resp);
 	}
 	
