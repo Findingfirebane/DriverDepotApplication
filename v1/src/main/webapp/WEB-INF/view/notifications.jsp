@@ -228,6 +228,9 @@
         <a href="${pageContext.request.contextPath}/notifications" class="active">
             Dashboard
         </a>
+        <a href="${pageContext.request.contextPath}/searchVehicles" class="active">
+            Vehicle Search
+        </a>
 
         <a href="${pageContext.request.contextPath}/submitInquiry" class="customer-link">
             ← Customer Form

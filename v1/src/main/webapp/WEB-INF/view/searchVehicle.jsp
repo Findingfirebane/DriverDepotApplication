@@ -438,7 +438,7 @@
 
     <%
         List<VehicleDTO> vehicles = (List<VehicleDTO>) request.getAttribute("vehicles");
-
+        Integer userRole = (Integer) session.getAttribute("roleId");
         if (vehicles != null) {
             if (!vehicles.isEmpty()) {
     %>
@@ -450,7 +450,19 @@
                     <div class="vehicle-card">
                         <div class="vehicle-top">
                             <h4><%= v.getMake() %> <%= v.getModel() %></h4>
-                            <span>Vehicle ID: <%= v.getId() %></span>
+
+                                <%
+                                if(userRole == 2){
+                                %>
+                                    <span>Vehicle ID: <%= v.getId() %></span>
+                                <% 
+                                }
+                                else{
+                                %>
+                                    <span></span>
+                                <%
+                                }
+                                %>
                         </div>
                         <div class="vehicle-body">
                             <p><strong>Year:</strong> <%= v.getYear() %></p>
