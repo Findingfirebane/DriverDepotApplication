@@ -347,10 +347,23 @@
     <div class="nav-buttons">
         <%
             String username = (String) session.getAttribute("username");
-            if (username != null) {
+            Integer userRole = (Integer) session.getAttribute("roleId");
+
+            if (username != null && userRole == 2) {
         %>
             <span class="welcome-text">Welcome, <%= username %></span>
+            <a href="<%= request.getContextPath() %>/notifications" class="btn-success">Staff Portal</a>
             <a href="<%= request.getContextPath() %>/signOut" class="btn-danger">Sign Out</a>
+        
+        
+        <%
+            } else if(username != null && userRole == 1) {
+        %>
+            <span class="welcome-text">Welcome, <%= username %></span>
+            <a href="<%= request.getContextPath() %>/customerSignIn" class="btn-success">Customer Portal</a>
+            <a href="<%= request.getContextPath() %>/signOut" class="btn-danger">Sign Out</a>
+        
+
         <%
             } else {
         %>
@@ -438,7 +451,7 @@
 
     <%
         List<VehicleDTO> vehicles = (List<VehicleDTO>) request.getAttribute("vehicles");
-
+        // Integer userRole = (Integer) session.getAttribute("roleId");
         if (vehicles != null) {
             if (!vehicles.isEmpty()) {
     %>
@@ -450,7 +463,19 @@
                     <div class="vehicle-card">
                         <div class="vehicle-top">
                             <h4><%= v.getMake() %> <%= v.getModel() %></h4>
-                            <span>Vehicle ID: <%= v.getId() %></span>
+
+                                <%
+                                if(userRole == 2){
+                                %>
+                                    <span>Vehicle ID: <%= v.getId() %></span>
+                                <% 
+                                }
+                                else{
+                                %>
+                                    <span></span>
+                                <%
+                                }
+                                %>
                         </div>
                         <div class="vehicle-body">
                             <p><strong>Year:</strong> <%= v.getYear() %></p>

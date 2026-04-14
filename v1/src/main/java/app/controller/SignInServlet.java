@@ -52,8 +52,19 @@ public class SignInServlet extends HttpServlet {
                 session.setAttribute("username", user.getUsername());
                 session.setAttribute("roleId", user.getRole_id());
 
-                response.sendRedirect(request.getContextPath() + "/searchVehicles?login=success");
+
+               if(user.getRole_id()==2){
+                response.sendRedirect(request.getContextPath()+ "/notifications");
                 return;
+               }else if(user.getRole_id()==1) {
+                response.sendRedirect(request.getContextPath() + "/customerSignIn");
+                return;
+               }
+
+
+////////////////////////return to add logic for the customer dashboard route/////////////////////////
+               // response.sendRedirect(request.getContextPath() + "/searchVehicles?login=success");
+                // return;
             } else {
                 request.setAttribute("error", "Invalid email or password.");
             }
