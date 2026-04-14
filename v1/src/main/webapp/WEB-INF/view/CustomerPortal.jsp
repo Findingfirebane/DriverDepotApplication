@@ -225,7 +225,7 @@
         <h1>DriverDepot</h1>
         <p class="portal-label">Customer Portal</p>
 
-        <a href="${pageContext.request.contextPath}/customerSignIn" class="active">
+        <a href="${pageContext.request.contextPath}/notificationsByUser" class="active">
             Dashboard
         </a>
         <a href="${pageContext.request.contextPath}/searchVehicles" class="active">

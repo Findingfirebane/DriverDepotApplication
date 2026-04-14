@@ -79,4 +79,39 @@ public class NotificationRepository {
 			stmt.executeUpdate();
 		}
 	}
+
+/**
+ * method for user dashboard
+ * @param email
+ * @return
+ * @throws SQLException
+ */
+	public List<Notification> getNotificationsByEmail(String email) throws SQLException{
+		List notifications = new ArrayList<>();
+
+		String sql= "SELECT id, vehicle, customer_name, customer_email, message, submitted_at FROM notifications where customer_email = ? ORDER BY submitted_at DESC";
+
+		try (Connection conn = getConnection();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+
+				) {  
+
+				stmt.setString(1, email);
+				ResultSet rs = stmt.executeQuery();
+
+
+			while (rs.next()) {
+				Notification n = new Notification(
+						rs.getInt("id"), 
+						rs.getString("vehicle"),
+						rs.getString("customer_name"), 
+						rs.getString("customer_email"),
+						 rs.getString("message"),
+						rs.getString("submitted_at"));
+				notifications.add(n);
+			}
+		}
+
+		return notifications;
+	}
 }

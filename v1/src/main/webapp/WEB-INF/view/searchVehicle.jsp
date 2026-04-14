@@ -360,7 +360,7 @@
             } else if(username != null && userRole == 1) {
         %>
             <span class="welcome-text">Welcome, <%= username %></span>
-            <a href="<%= request.getContextPath() %>/customerSignIn" class="btn-success">Customer Portal</a>
+            <a href="<%= request.getContextPath() %>/notificationsByUser" class="btn-success">Customer Portal</a>
             <a href="<%= request.getContextPath() %>/signOut" class="btn-danger">Sign Out</a>
         
 
@@ -465,15 +465,19 @@
                             <h4><%= v.getMake() %> <%= v.getModel() %></h4>
 
                                 <%
+                                if (userRole != null){
                                 if(userRole == 2){
                                 %>
                                     <span>Vehicle ID: <%= v.getId() %></span>
                                 <% 
                                 }
-                                else{
+                                else if(userRole == 1) {
+                                    
                                 %>
                                     <span></span>
                                 <%
+                                
+                                }
                                 }
                                 %>
                         </div>
