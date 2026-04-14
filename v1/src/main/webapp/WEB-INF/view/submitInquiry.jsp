@@ -154,7 +154,30 @@
 
 <header>
     <h1>DriverDepot</h1>
+    <%
+    Integer userRole = (Integer) session.getAttribute("roleId");
+    if(userRole != null && userRole == 2){
+    %>
+
     <a href="${pageContext.request.contextPath}/notifications">Staff Portal</a>
+
+    <%
+        }else if (userRole != null && userRole == 1){
+
+    %>
+
+    <a href="${pageContext.request.contextPath}/notificationsByUser">User Portal</a>
+
+
+    <%
+    }else{
+    %>
+
+    <a href="${pageContext.request.contextPath}/searchVehicles">Search Vehicles</a>
+
+    <%
+    }
+    %>
 </header>
 
 <div class="container">

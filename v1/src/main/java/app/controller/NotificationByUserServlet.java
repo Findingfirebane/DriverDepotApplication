@@ -54,7 +54,7 @@ public class NotificationByUserServlet extends HttpServlet{
         }
 
         }else{
-            resp.sendRedirect(req.getContextPath()+ "/CustomerPortal.jsp");//propably need to fix
+            resp.sendRedirect("/WEB-INF/view/CustomerPortal.jsp");// maybe need to fix
         }
     }
     
