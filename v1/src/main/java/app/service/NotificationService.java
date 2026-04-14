@@ -38,4 +38,8 @@ public class NotificationService {
     public void deleteNotification(int id) throws SQLException {
         repository.delete(id);
     }
+
+    public List<Notification> getNotificationsByEmail(String email) throws SQLException{
+        return repository.getNotificationsByEmail(email);
+    }
 }

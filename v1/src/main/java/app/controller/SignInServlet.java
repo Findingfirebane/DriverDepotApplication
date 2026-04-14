@@ -57,7 +57,7 @@ public class SignInServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+ "/notifications");
                 return;
                }else if(user.getRole_id()==1) {
-                response.sendRedirect(request.getContextPath() + "/customerSignIn");
+                response.sendRedirect(request.getContextPath() + "/notificationsByUser");
                 return;
                }
 

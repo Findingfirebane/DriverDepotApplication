@@ -22,7 +22,7 @@ public class CustomerDashboardServlet  extends HttpServlet{
             req.getRequestDispatcher("/WEB-INF/view/CustomerPortal.jsp").forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
-            req.getRequestDispatcher("/WEB-INF/view/searchVehicle.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/view/CustomerPortal.jsp").forward(req, resp);
         }
     }
 
