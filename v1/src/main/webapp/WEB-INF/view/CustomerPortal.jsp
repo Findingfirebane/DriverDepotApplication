@@ -223,21 +223,20 @@
     <!-- Sidebar -->
     <aside class="sidebar">
         <h1>DriverDepot</h1>
-        <p class="portal-label">Staff Portal</p>
+        <p class="portal-label">Customer Portal</p>
 
-        <a href="${pageContext.request.contextPath}/notifications" class="active">
+        <a href="${pageContext.request.contextPath}/customerSignIn" class="active">
             Dashboard
         </a>
         <a href="${pageContext.request.contextPath}/searchVehicles" class="active">
             Vehicle Search
         </a>
-        <%-- come back to add path for Vehicle  --%>
-        <a href="${pageContext.request.contextPath}" class="active">
-            Vehicle Managment
+        <a href="${pageContext.request.contextPath}/submitInquiry" class="active">
+            Submit Inquiry
         </a>
 
-        <a href="${pageContext.request.contextPath}/submitInquiry" class="customer-link">
-            ← Customer Form
+        <a href="${pageContext.request.contextPath}/searchVehicles" class="customer-link">
+            ← Search for a car
         </a>
     </aside>
 
@@ -245,7 +244,7 @@
     <main class="main">
 
         <div class="page-header">
-            <h2>Customer Inquiries
+            <h2>Customer Portal
                 <%
                     List<Notification> notifications =
                         (List<Notification>) request.getAttribute("notifications");
@@ -254,7 +253,7 @@
                     <span class="badge"><%= notifications.size() %></span>
                 <% } %>
             </h2>
-            <p>Manage incoming customer inquiries and delete them once handled.</p>
+            <p>Manage your inqueries.</p>
         </div>
 
         <% if (request.getAttribute("error") != null) { %>

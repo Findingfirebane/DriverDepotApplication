@@ -56,9 +56,12 @@ public class SignInServlet extends HttpServlet {
                if(user.getRole_id()==2){
                 response.sendRedirect(request.getContextPath()+ "/notifications");
                 return;
-               } 
+               }else if(user.getRole_id()==1) {
+                response.sendRedirect(request.getContextPath() + "/customerSignIn");
+                return;
+               }
 
-               
+
 ////////////////////////return to add logic for the customer dashboard route/////////////////////////
                // response.sendRedirect(request.getContextPath() + "/searchVehicles?login=success");
                 // return;
