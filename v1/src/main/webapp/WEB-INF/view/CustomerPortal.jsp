@@ -231,9 +231,9 @@
         <a href="${pageContext.request.contextPath}/searchVehicles" class="active">
             Vehicle Search
         </a>
-        <a href="${pageContext.request.contextPath}/submitInquiry" class="active">
+        <%-- <a href="${pageContext.request.contextPath}/submitInquiry" class="active">
             Submit Inquiry
-        </a>
+        </a> --%>
 
         <a href="${pageContext.request.contextPath}/searchVehicles" class="customer-link">
             ← Search for a car
@@ -253,7 +253,7 @@
                     <span class="badge"><%= notifications.size() %></span>
                 <% } %>
             </h2>
-            <p>Manage your inqueries.</p>
+            <p>Manage your inquiries.</p>
         </div>
 
         <% if (request.getAttribute("error") != null) { %>
@@ -262,14 +262,14 @@
 
         <div class="card">
             <div class="card-header">
-                <h3>Pending Inquiries</h3>
-                <p>Click Delete once you have followed up with the customer.</p>
+                <h3>Your Pending Inquiries</h3>
+                <%-- <p>Click Delete once you have followed up with the customer.</p> --%>
             </div>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Customer</th>
+                        <%-- <th>Customer</th> --%> 
                         <th>Vehicle</th>
                         <th>Email</th>
                         <th>Message</th>
@@ -291,7 +291,7 @@
                         for (Notification n : notifications) {
                 %>
                     <tr>
-                        <td><strong><%= n.getCustomerName() %></strong></td>
+                        <%-- <td><strong><%= n.getCustomerName() %></strong></td> --%>
                         <td><%= n.getVehicle() %></td>
                         <td><%= n.getCustomerEmail() %></td>
                         <td class="message-cell"><%= n.getMessage() != null ? n.getMessage() : "-" %></td>

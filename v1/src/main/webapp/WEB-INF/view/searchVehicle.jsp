@@ -341,7 +341,7 @@
 <header>
     <div class="brand">
         <h1>DriverDepot</h1>
-        <p>Customer Vehicle Search Dashboard</p>
+        <p>Vehicle Search Portal</p>
     </div>
 
     <div class="nav-buttons">
@@ -487,10 +487,28 @@
                             <p><strong>Details:</strong> <%= v.getDetails() != null ? v.getDetails() : "No additional details available." %></p>
                             <span class="price-tag">$<%= v.getMsrp() %></span>
                             <br>
+
+
+                            <% 
+                            if (username != null && (userRole == 2 || userRole == 1)) {
+                            %>
+
                             <a class="inquiry-btn"
                                href="<%= request.getContextPath() %>/submitInquiry?vehicle=<%= java.net.URLEncoder.encode(vehicleLabel, "UTF-8") %>">
                                Submit Inquiry
                             </a>
+
+                           <% 
+                            }else{
+                            %>  
+                            <br>
+                            <a href="<%= request.getContextPath() %>/signIn" class="inquiry-btn">Sign In To Submit Inquiry</a>
+
+                            <%
+                            }
+                            %>
+
+
                         </div>
                     </div>
                 <%
