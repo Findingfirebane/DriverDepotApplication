@@ -341,7 +341,7 @@
 <header>
     <div class="brand">
         <h1>DriverDepot</h1>
-        <p>Customer Vehicle Search Dashboard</p>
+        <p>Vehicle Search Portal</p>
     </div>
 
     <div class="nav-buttons">
