@@ -4,6 +4,15 @@ This is a Java Servlet-based MVC web application built with Maven and deployed u
 It demonstrates a layered architecture (Controller, Service, Repository, Model).
 
 ## How To Run
+## DOCKER:
+1. Docker Desktop is installed
+2. Open terminal in project root folder.
+3. run: `docker-compose up --build`
+4. Access the application at:  ` http://localhost:8080/v1`
+
+
+
+## LOCALLY:
 
 1. Make sure Maven is installed.
 2. Navigate to the project root (where pom.xml is).
