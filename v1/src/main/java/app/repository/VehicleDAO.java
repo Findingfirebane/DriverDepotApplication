@@ -225,4 +225,78 @@ public List<Vehicle> getVehiclesByMakeAndModel(String make, String model){
 
     return vehicles;
     }
+
+    /** US.4 — staff vehicle CRUD */
+    public Vehicle getVehicleById(int id) {
+        try (Connection conn = DatabaseConnection.INSTANCE.getConnection();
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM vehicles WHERE id = ?")) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Vehicle v = new Vehicle();
+                    v.setId(rs.getInt("id"));
+                    v.setMake(rs.getString("make"));
+                    v.setModel(rs.getString("model"));
+                    v.setYear(rs.getInt("year"));
+                    v.setMileage(rs.getInt("mileage"));
+                    v.setMsrp(rs.getInt("msrp"));
+                    v.setStock(rs.getInt("stock"));
+                    v.setDetails(rs.getString("details"));
+                    return v;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean addVehicle(Vehicle v) {
+        String sql = "INSERT INTO vehicles (make, model, year, mileage, msrp, stock, details) VALUES (?,?,?,?,?,?,?)";
+        try (Connection conn = DatabaseConnection.INSTANCE.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, v.getMake());
+            ps.setString(2, v.getModel());
+            ps.setInt(3, v.getYear());
+            ps.setInt(4, v.getMileage());
+            ps.setInt(5, v.getMsrp());
+            ps.setInt(6, v.getStock());
+            ps.setString(7, v.getDetails());
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateVehicle(Vehicle v) {
+        String sql = "UPDATE vehicles SET make=?, model=?, year=?, mileage=?, msrp=?, stock=?, details=? WHERE id=?";
+        try (Connection conn = DatabaseConnection.INSTANCE.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, v.getMake());
+            ps.setString(2, v.getModel());
+            ps.setInt(3, v.getYear());
+            ps.setInt(4, v.getMileage());
+            ps.setInt(5, v.getMsrp());
+            ps.setInt(6, v.getStock());
+            ps.setString(7, v.getDetails());
+            ps.setInt(8, v.getId());
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteVehicle(int id) {
+        String sql = "DELETE FROM vehicles WHERE id=?";
+        try (Connection conn = DatabaseConnection.INSTANCE.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
