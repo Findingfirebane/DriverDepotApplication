@@ -1,6 +1,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="java.util.List" %>
 <%@ page import="app.model.Notification" %>
+
+<%
+    String username = (String) session.getAttribute("username");
+    Integer roleId = (Integer) session.getAttribute("roleId");
+    String roleName = "";
+
+    if (roleId != null) {
+        if (roleId == 1) {
+            roleName = "Staff";
+        } else if (roleId == 2) {
+            roleName = "Customer";
+        }
+    }
+
+    List<Notification> notifications =
+        (List<Notification>) request.getAttribute("notifications");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +38,6 @@
             color: #1e293b;
         }
 
-        /* ---------- SIDEBAR ---------- */
         .layout {
             display: flex;
             min-height: 100vh;
@@ -74,7 +91,6 @@
             font-size: 13px;
         }
 
-        /* ---------- MAIN CONTENT ---------- */
         .main {
             flex: 1;
             padding: 40px;
@@ -95,7 +111,6 @@
             color: #64748b;
         }
 
-        /* ---------- CARD ---------- */
         .card {
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
@@ -120,7 +135,6 @@
             margin-top: 2px;
         }
 
-        /* ---------- TABLE ---------- */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -170,7 +184,6 @@
             white-space: nowrap;
         }
 
-        /* ---------- DELETE BUTTON ---------- */
         .btn-delete {
             padding: 6px 14px;
             background-color: #ffffff;
@@ -185,7 +198,6 @@
             background-color: #fef2f2;
         }
 
-        /* ---------- EMPTY STATE ---------- */
         .empty-state {
             padding: 48px 24px;
             text-align: center;
@@ -193,7 +205,6 @@
             font-size: 14px;
         }
 
-        /* ---------- ALERTS ---------- */
         .alert-error {
             background-color: #fef2f2;
             border: 1px solid #fecaca;
@@ -220,30 +231,29 @@
 
 <div class="layout">
 
-    <!-- Sidebar -->
     <aside class="sidebar">
         <h1>DriverDepot</h1>
-        <p class="portal-label">Staff Portal</p>
+        <p class="portal-label">
+            <%= roleName %> Portal
+            <% if (username != null) { %>
+                - <%= username %>
+            <% } %>
+        </p>
 
         <a href="${pageContext.request.contextPath}/notifications" class="active">
             Dashboard
         </a>
 
-        <a href="${pageContext.request.contextPath}/submitInquiry" class="customer-link">
-            ← Customer Form
+        <a href="${pageContext.request.contextPath}/searchVehicles" class="customer-link">
+            ← Back to Search
         </a>
     </aside>
 
-    <!-- Main Content -->
     <main class="main">
 
         <div class="page-header">
             <h2>Customer Inquiries
-                <%
-                    List<Notification> notifications =
-                        (List<Notification>) request.getAttribute("notifications");
-                    if (notifications != null) {
-                %>
+                <% if (notifications != null) { %>
                     <span class="badge"><%= notifications.size() %></span>
                 <% } %>
             </h2>
@@ -251,7 +261,7 @@
         </div>
 
         <% if (request.getAttribute("error") != null) { %>
-            <div class="alert-error">${error}</div>
+            <div class="alert-error"><%= request.getAttribute("error") %></div>
         <% } %>
 
         <div class="card">
