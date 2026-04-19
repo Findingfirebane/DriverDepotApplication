@@ -85,6 +85,16 @@
             background-color: #b91c1c;
         }
 
+        .btn-success {
+            background-color: #0f766e;
+            color: #fff;
+            border: 1px solid #0f766e;
+        }
+
+        .btn-success:hover {
+            background-color: #115e59;
+        }
+
         .welcome-text {
             padding: 10px 14px;
             font-size: 14px;
@@ -353,6 +363,7 @@
         %>
             <span class="welcome-text">Welcome, <%= username %></span>
             <a href="<%= request.getContextPath() %>/notifications" class="btn-success">Staff Portal</a>
+            <a href="<%= request.getContextPath() %>/manageVehicles" class="btn-dark">Manage Vehicles</a>
             <a href="<%= request.getContextPath() %>/signOut" class="btn-danger">Sign Out</a>
         
         
