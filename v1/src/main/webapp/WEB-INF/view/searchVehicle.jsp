@@ -338,18 +338,32 @@
 </head>
 <body>
 
+<%
+    String username = (String) session.getAttribute("username");
+    Integer roleId = (Integer) session.getAttribute("roleId");
+    boolean isStaff = (roleId != null && roleId == 1);
+%>
+
 <header>
     <div class="brand">
         <h1>DriverDepot</h1>
-        <p>Customer Vehicle Search Dashboard</p>
+        <p><%= isStaff ? "Staff Vehicle Search Dashboard" : "Customer Vehicle Search Dashboard" %></p>
     </div>
 
     <div class="nav-buttons">
         <%
-            String username = (String) session.getAttribute("username");
             if (username != null) {
         %>
             <span class="welcome-text">Welcome, <%= username %></span>
+
+            <%
+                if (isStaff) {
+            %>
+                <a href="<%= request.getContextPath() %>/notifications" class="btn-outline">Customer Inquiries</a>
+            <%
+                }
+            %>
+
             <a href="<%= request.getContextPath() %>/signOut" class="btn-danger">Sign Out</a>
         <%
             } else {
@@ -450,7 +464,17 @@
                     <div class="vehicle-card">
                         <div class="vehicle-top">
                             <h4><%= v.getMake() %> <%= v.getModel() %></h4>
-                            <span>Vehicle ID: <%= v.getId() %></span>
+                            <%
+                                if (isStaff) {
+                            %>
+                                <span>Vehicle ID: <%= v.getId() %></span>
+                            <%
+                                } else {
+                            %>
+                                <span><%= v.getYear() %> Model</span>
+                            <%
+                                }
+                            %>
                         </div>
                         <div class="vehicle-body">
                             <p><strong>Year:</strong> <%= v.getYear() %></p>

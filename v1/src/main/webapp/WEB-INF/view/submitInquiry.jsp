@@ -154,7 +154,7 @@
 
 <header>
     <h1>DriverDepot</h1>
-    <a href="${pageContext.request.contextPath}/notifications">Staff Portal</a>
+    <a href="${pageContext.request.contextPath}/searchVehicles">Back to Search</a>
 </header>
 
 <div class="container">
