@@ -114,8 +114,8 @@ color:#475569;
 
 <label>Role</label>
 <select name="role">
-<option value="1">Customer</option>
-<option value="2">Staff</option>
+    <option value="1">Staff</option>
+    <option value="2">Customer</option>
 </select>
 
 <button type="submit">Sign Up</button>
