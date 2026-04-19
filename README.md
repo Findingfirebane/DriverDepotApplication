@@ -7,8 +7,10 @@ It demonstrates a layered architecture (Controller, Service, Repository, Model).
 ## DOCKER:
 1. Docker Desktop is installed
 2. Open terminal in project root folder.
-3. run: `docker-compose up --build`
-4. Access the application at:  ` http://localhost:8080/v1`
+3. Check that: jdbc.url=jdbc:mysql://localhost:3306/vehiclemanagement 
+is changed to: jdbc.url=jdbc:mysql://db:3306/vehiclemanagement in the database.properties file
+4. run: `docker-compose up --build`
+5. Access the application at:  ` http://localhost:8080/v1`
 
 
 
@@ -196,4 +198,5 @@ Please update your local MySQL setup to match the credentials above before runni
 
 When US.2 (vehicle search) is complete, the hardcoded vehicle value in SubmitInquiryServlet.java
 can be replaced with a URL parameter. This is a two-line change and all other code remains the same.
+
 
