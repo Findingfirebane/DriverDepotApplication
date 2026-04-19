@@ -12,40 +12,27 @@ import java.sql.SQLException;
 import java.util.List;
 import app.model.Notification;
 
-// This servlet handles the staff notifications page (US.5)
-// It maps to /notifications so only staff can visit localhost:8080/v1/notifications
 @WebServlet("/notifications")
 public class NotificationServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private NotificationService service = new NotificationService();
 
-    // Helper method to check if the current user is logged in as staff
-    private boolean isStaff(HttpServletRequest req) {
-        HttpSession session = req.getSession(false);
-
-        if (session == null || session.getAttribute("roleId") == null) {
-            return false;
-        }
-
-        int roleId = (int) session.getAttribute("roleId");
-        return roleId == 1; // staff = 1
-    }
-
-    // doGet handles when the staff member navigates to the notifications page
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         HttpSession session = req.getSession(false);
 
-        // Not logged in
+        // User not logged in
         if (session == null || session.getAttribute("roleId") == null) {
             resp.sendRedirect(req.getContextPath() + "/signIn");
             return;
         }
 
-        // Logged in but not staff
-        if (!isStaff(req)) {
+        int roleId = (Integer) session.getAttribute("roleId");
+
+        // Only staff can open notifications page
+        if (roleId != 1) {
             resp.sendRedirect(req.getContextPath() + "/searchVehicles");
             return;
         }
@@ -61,21 +48,22 @@ public class NotificationServlet extends HttpServlet {
         }
     }
 
-    // doPost handles when the staff member clicks the Delete button on a row
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         HttpSession session = req.getSession(false);
 
-        // Not logged in
+        // User not logged in
         if (session == null || session.getAttribute("roleId") == null) {
             resp.sendRedirect(req.getContextPath() + "/signIn");
             return;
         }
 
-        // Logged in but not staff
-        if (!isStaff(req)) {
+        int roleId = (Integer) session.getAttribute("roleId");
+
+        // Only staff can delete notifications
+        if (roleId != 1) {
             resp.sendRedirect(req.getContextPath() + "/searchVehicles");
             return;
         }
