@@ -4,6 +4,18 @@ A Java Servlet-based MVC web application built with Maven and deployed using Apa
 It demonstrates a layered architecture (Controller, Service, Repository, Model).
  
 ## How To Run
+## DOCKER:
+1. Docker Desktop is installed
+2. Open terminal in project root folder.
+3. Check that: jdbc.url=jdbc:mysql://localhost:3306/vehiclemanagement 
+is changed to: jdbc.url=jdbc:mysql://db:3306/vehiclemanagement in the database.properties file
+4. run: `docker-compose up --build`
+5. Access the application at:  ` http://localhost:8080/v1`
+
+
+
+## LOCALLY:
+
  
 1. Make sure Maven is installed.
 2. Navigate to the project root (where pom.xml is).
@@ -151,6 +163,54 @@ mvn test
 ```
  
 All 8 tests in NotificationServiceTest should pass with a green bar.
+
+### Pages Added
+
+| Page                   | URL                                        | Description                          |
+|------------------------|--------------------------------------------|--------------------------------------|
+| Customer Inquiry Form  | http://localhost:8080/v1/submitInquiry     | Customer submits a vehicle inquiry   |
+| Staff Notifications    | http://localhost:8080/v1/notifications     | Staff views and deletes inquiries    |
+
+### Demo Flow
+
+1. Open http://localhost:8080/v1/submitInquiry
+2. Vehicle is pre-filled and locked (simulates clicking Enquire on a listing)
+3. Fill in name, email, and optional message
+4. Click Submit Inquiry — green success banner confirms submission
+5. Open http://localhost:8080/v1/notifications
+6. New inquiry appears at the top of the table
+7. Click Delete on any row to remove it — page reloads with updated table
+
+### Sprint 4 Changes
+
+The following improvements were made to this feature set during Sprint 4:
+
+**1. Singleton Database Connection**
+NotificationRepository previously loaded database.properties itself using its own copy of the
+connection logic. It now uses the shared DatabaseConnection.INSTANCE singleton built by the team.
+There is now one single source of truth for database credentials across the entire application.
+
+**2. Server-Side Input Validation**
+SubmitInquiryServlet now validates that name and email are not blank before calling the service
+layer. The JSP form already has 'required' on those fields, but that is HTML-only and can be
+bypassed by sending a raw HTTP POST request directly to the servlet URL. The server-side guard
+ensures the database is never called with empty data regardless of how the request arrives.
+
+**3. JUnit Tests**
+NotificationServiceTest.java was added to src/test/java/app/service/. It contains 8 unit tests
+covering the Notification model constructor and all getters, the insert pattern where id=0 and
+submittedAt=null because MySQL generates both automatically, and the optional message field which
+the JSP renders as "-" when null. All 8 tests pass. Run with: mvn test
+
+### Note for Teammates
+
+The database.properties file has been updated from the original cst8288/vehiclemanagment credentials.
+Please update your local MySQL setup to match the credentials above before running.
+
+When US.2 (vehicle search) is complete, the hardcoded vehicle value in SubmitInquiryServlet.java
+can be replaced with a URL parameter. This is a two-line change and all other code remains the same.
+
+
  
 ## Pages
  

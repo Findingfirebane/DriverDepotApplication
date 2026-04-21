@@ -1,6 +1,7 @@
-create database vehiclemanagement;
+-- create database vehiclemanagement;
 
-use vehiclemanagement;
+-- use vehiclemanagement;
+
 drop table if EXISTS user_notifications;
 drop table if exists user_saved_vehicles;
 
